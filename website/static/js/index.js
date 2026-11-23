@@ -5,6 +5,64 @@ document.addEventListener("keypress", (e) => {
     }
 });
 
+const timerDuration = 10 * 60;
+let remainingSeconds = timerDuration;
+let timerRunning = false;
+let timerInterval = null;
+
+const timerDisplay = document.getElementById("timer-display");
+const timerToggle = document.getElementById("timer-toggle");
+const timerReset = document.getElementById("timer-reset");
+
+function renderTimer() {
+    const minutes = Math.floor(remainingSeconds / 60);
+    const seconds = remainingSeconds % 60;
+    timerDisplay.textContent =
+        `${minutes}:${seconds.toString().padStart(2, "0")}`;
+}
+
+function stopTimer() {
+    timerRunning = false;
+    if (timerInterval !== null) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
+    timerToggle.textContent = "Play";
+}
+
+timerToggle.addEventListener("click", () => {
+    if (remainingSeconds === 0) {
+        remainingSeconds = timerDuration;
+        renderTimer();
+    }
+
+    if (timerRunning) {
+        stopTimer();
+        return;
+    }
+
+    timerRunning = true;
+    timerToggle.textContent = "Pause";
+    timerInterval = setInterval(() => {
+        remainingSeconds -= 1;
+        if (remainingSeconds <= 0) {
+            remainingSeconds = 0;
+            renderTimer();
+            stopTimer();
+            return;
+        }
+        renderTimer();
+    }, 1000);
+});
+
+timerReset.addEventListener("click", () => {
+    stopTimer();
+    remainingSeconds = timerDuration;
+    renderTimer();
+});
+
+renderTimer();
+
 sidebarOpen = false;
 let generationEnabled = true;
 let generationRequestId = 0;

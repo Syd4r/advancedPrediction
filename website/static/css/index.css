@@ -114,3 +114,35 @@ textarea {
 .generation-controls .form-check {
     margin-bottom: 0;
 }
+
+.timer {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 1050;
+    width: 132px;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    background-color: rgb(45, 45, 46);
+    border: 1px solid #62626274;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px #00000087;
+}
+
+.timer-display {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.timer-controls .btn {
+    flex: 1;
+}

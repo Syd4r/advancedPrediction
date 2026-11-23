@@ -3,8 +3,4 @@ flask_sqlalchemy
 python-dotenv
 requests
 gunicorn
-pytest
-mocker
-pytest-mock
-pylint
 openai
