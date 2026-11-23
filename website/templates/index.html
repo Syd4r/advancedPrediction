@@ -101,6 +101,16 @@
                 <button type="button" class="btn btn-outline-light btn-sm" id="timer-reset">Reset</button>
             </div>
         </div>
+        <button type="button" class="sidebar-tab" id="sidebar-tab" aria-controls="right-sidebar" aria-expanded="false" aria-label="Open suggestions menu">
+            <span id="sidebar-tab-icon" aria-hidden="true">&#8249;</span>
+        </button>
+        <div class="sidebar-help" id="sidebar-help" role="status" aria-live="polite">
+            <div>
+                <strong>Suggestions panel</strong>
+                <div>Press <kbd>Alt</kbd> + <kbd>P</kbd> or use the right tab.</div>
+            </div>
+            <button type="button" class="sidebar-help-close" id="sidebar-help-close" aria-label="Dismiss">&times;</button>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
         <script src="{{ url_for('static', filename='js/index.js') }}"></script> 
     </body>

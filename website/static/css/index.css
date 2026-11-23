@@ -146,3 +146,73 @@ textarea {
 .timer-controls .btn {
     flex: 1;
 }
+
+.sidebar-tab {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    z-index: 1040;
+    width: 34px;
+    height: 64px;
+    padding: 0;
+    transform: translateY(-50%);
+    border: 1px solid #62626274;
+    border-right: 0;
+    border-radius: 8px 0 0 8px;
+    color: white;
+    background-color: rgb(45, 45, 46);
+    box-shadow: 0px 0px 12px #00000087;
+    transition: right 0.4s ease;
+}
+
+.sidebar-tab:hover,
+.sidebar-tab:focus-visible {
+    background-color: rgb(69, 77, 78);
+}
+
+.sidebar-tab span {
+    display: block;
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.sidebar-tab.sidebar-open {
+    right: 35%;
+}
+
+.sidebar-help {
+    position: fixed;
+    top: 104px;
+    left: 16px;
+    z-index: 1060;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    max-width: 290px;
+    padding: 12px 14px;
+    color: white;
+    background-color: rgb(45, 45, 46);
+    border: 1px solid #62626274;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px #00000087;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.sidebar-help.hidden {
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+}
+
+.sidebar-help kbd {
+    background-color: rgb(63, 71, 72);
+}
+
+.sidebar-help-close {
+    padding: 0;
+    border: 0;
+    color: white;
+    background: transparent;
+    font-size: 1.25rem;
+    line-height: 1;
+}

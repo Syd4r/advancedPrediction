@@ -1,9 +1,23 @@
-document.addEventListener("keypress", (e) => {
-    if (e.key == "`") {
+document.addEventListener("keydown", (e) => {
+    if (e.altKey && e.key.toLowerCase() === "p") {
         e.preventDefault();
         openSidebar();
     }
 });
+
+const sidebarTab = document.getElementById("sidebar-tab");
+const sidebarTabIcon = document.getElementById("sidebar-tab-icon");
+const sidebarHelp = document.getElementById("sidebar-help");
+const sidebarHelpClose = document.getElementById("sidebar-help-close");
+
+sidebarTab.addEventListener("click", openSidebar);
+
+function dismissSidebarHelp() {
+    sidebarHelp.classList.add("hidden");
+}
+
+sidebarHelpClose.addEventListener("click", dismissSidebarHelp);
+setTimeout(dismissSidebarHelp, 7000);
 
 const timerDuration = 10 * 60;
 let remainingSeconds = timerDuration;
@@ -73,9 +87,17 @@ function openSidebar() {
     if (sidebarOpen) {
         rightSidebar.classList.add("hidden");
         leftPadding.classList.remove("hidden");
+        sidebarTab.classList.remove("sidebar-open");
+        sidebarTab.setAttribute("aria-expanded", "false");
+        sidebarTab.setAttribute("aria-label", "Open suggestions menu");
+        sidebarTabIcon.innerHTML = "&#8249;";
     } else {
         rightSidebar.classList.remove("hidden");
         leftPadding.classList.add("hidden");
+        sidebarTab.classList.add("sidebar-open");
+        sidebarTab.setAttribute("aria-expanded", "true");
+        sidebarTab.setAttribute("aria-label", "Close suggestions menu");
+        sidebarTabIcon.innerHTML = "&#8250;";
         triggerGeneration();
     }
     sidebarOpen = !sidebarOpen;
