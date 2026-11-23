@@ -1,0 +1,100 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap demo</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    </head>
+
+    <section class="container-fluid bg-dark2 p-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-2 left-padding" id="left-padding"></div>
+                <div class="col-8 p-3">
+                    <textarea class="main-doc text-bg-dark border-light-custom" id="main-doc"></textarea>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="right-sidebar p-3 hidden" id="right-sidebar">
+        <div class="form-floating">
+            <textarea class="form-control text-bg-dark border-light-custom" placeholder="Write your prompt here..." id="user-prompt" style="height: 100px"></textarea>
+            <label class="prompt-label text-bg-dark" for="user-prompt">Prompt</label>
+        </div>
+        <div class="generation-controls d-flex align-items-center justify-content-between pt-3">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="generation-toggle" checked>
+                <label class="form-check-label text-white" for="generation-toggle">Suggestions</label>
+            </div>
+            <button type="button" class="btn btn-outline-light btn-sm" id="reload-suggestions">
+                Reload
+            </button>
+        </div>
+        <div class="container-fluid p-0">
+            <div class="suggestions-loading text-white text-center py-4 hidden" id="suggestions-loading" role="status" aria-live="polite">
+                <div class="spinner-border spinner-border-sm me-2" aria-hidden="true"></div>
+                <span>Generating suggestions...</span>
+            </div>
+            <div class="suggestions row g-2 pt-3 hidden" id="suggestions">
+                <div class="col-6 col-md-4"><p class="suggestion border-light-custom py-3" id="suggestion-0">Placeholder</p></div>
+                <div class="col-6 col-md-4"><p class="suggestion border-light-custom py-3" id="suggestion-1">Placeholder</p></div>
+                <div class="col-6 col-md-4"><p class="suggestion border-light-custom py-3" id="suggestion-2">Placeholder</p></div>
+                <div class="col-6 col-md-4"><p class="suggestion border-light-custom py-3" id="suggestion-3">Placeholder</p></div>
+                <div class="col-6 col-md-4"><p class="suggestion border-light-custom py-3" id="suggestion-4">Placeholder</p></div>
+                <div class="col-6 col-md-4"><p class="suggestion border-light-custom py-3" id="suggestion-5">Placeholder</p></div>
+                <div class="col-6 col-md-4"><p class="suggestion border-light-custom py-3" id="suggestion-6">Placeholder</p></div>
+                <div class="col-6 col-md-4"><p class="suggestion border-light-custom py-3" id="suggestion-7">Placeholder</p></div>
+                <div class="col-6 col-md-4"><p class="suggestion border-light-custom py-3" id="suggestion-8">Placeholder</p></div>
+                <div class="col-6 col-md-4"><p class="suggestion border-light-custom py-3" id="suggestion-9">Placeholder</p></div>
+                <div class="col-6 col-md-4"><p class="suggestion border-light-custom py-3" id="suggestion-10">Placeholder</p></div>
+                <div class="col-6 col-md-4"><p class="suggestion border-light-custom py-3" id="suggestion-11">Placeholder</p></div>
+            </div>
+            <h3 class="suggestions text-white p-5" id="suggestions-none">
+                Suggestions will appear once more text is written.
+            </h3>
+        </div>
+        <div class="container-fluid">
+            <div class="row pt-3 gy-3">
+                <div class="col-12 text-bg-dark border-light-custom text-center">
+                    <label for="range-prof" class="form-label fs-5 fw-semibold text-uppercase">Professionalism</label>
+                    <div style="display: flex;">
+                        <div class="col-2 pe-2">Casual</div>
+                        <div class="col-8">
+                            <input type="range" class="form-range" min="0" max="100"id="range-prof">
+                        </div>
+                        <div class="col-2 ps-2">Formal</div>
+                    </div>
+                </div>
+                <div class="col-12 text-bg-dark border-light-custom text-center">
+                    <label for="range-expr" class="form-label fs-5 fw-semibold text-uppercase">Expressivity</label>
+                    <div style="display: flex;">
+                        <div class="col-2 pe-2">Neutral</div>
+                        <div class="col-8">
+                            <input type="range" class="form-range" min="0" max="100"id="range-expr">
+                        </div>
+                        <div class="col-2 ps-2">Vivid</div>
+                    </div>
+                </div>
+                <div class="col-12 text-bg-dark border-light-custom text-center">
+                    <label for="range-verb" class="form-label fs-5 fw-semibold text-uppercase">Verbosity</label>
+                    <div style="display: flex;">
+                        <div class="col-2 pe-2">Simple</div>
+                        <div class="col-8">
+                            <input type="range" class="form-range" min="0" max="100"id="range-verb">
+                        </div>
+                        <div class="col-2 ps-2">Complex</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+  
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <script src="{{ url_for('static', filename='js/index.js') }}"></script> 
+    </body>
+</html>
